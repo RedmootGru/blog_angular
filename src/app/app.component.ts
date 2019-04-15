@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Post} from './post';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,23 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'blog';
+
+  posts: Array<Post>;
+
+  constructor() {
+
+    this.posts = new Array<Post>();
+
+
+    this.createPost();
+    this.createPost();
+    this.createPost();
+  }
+
+
+
+  createPost() {
+
+    this.posts.push(new Post('Article #' + (this.posts.length + 1 )));
+  }
 }
