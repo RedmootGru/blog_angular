@@ -4,13 +4,20 @@
                 'list-group-item-success':post.loveIts > 0,
                 'list-group-item-danger':post.loveIts < 0}">
   <div class="row d-flex flex-row justify-content-between align-items-center">
-    <h2>{{ post.title }}</h2><span>{{ post.createdAt | date: 'short' }}</span>
+    <h2>{{ '#'+post.id +' '+post.title }}</h2><span>{{ post.createdAt | date: 'short' }}</span>
   </div>
   <p>{{ post.content }}</p>
 
-  <div class="d-flex flex-row justify-content-around align-items-center">
-    <button type="button" class="btn btn-success" (click)="loveIt()"><fa name="thumbs-up"></fa>&nbsp;Love it !</button>
-    <strong>{{ post.loveIts }}</strong>
-  <button type="button" class="btn btn-danger" (click)="dontLoveIt()"><fa name="thumbs-down"></fa>&nbsp;Don't love it !</button>
+  <div class="d-flex flex-row justify-content-between align-items-center">
+    <div class="d-flex flex-row justify-content-between align-items-center" style="flex-basis:50%">
+      <button type="button" class="btn btn-success" (click)="loveIt(post.id)"><fa name="thumbs-up"></fa>&nbsp;Love it !</button>
+      <strong>{{ post.loveIts }}</strong>
+      <button type="button" class="btn btn-danger" (click)="dontLoveIt(post.id)"><fa name="thumbs-down"></fa>&nbsp;Don't love it !</button>
+    </div>
+    <button type="button" class="btn btn-danger" (click)="onDelete(post.id)">
+      <fa name="trash"></fa>&nbsp;&nbsp;Supprimer post
+    </button>
   </div>
+
+
 </li>
